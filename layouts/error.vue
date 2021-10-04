@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <h1>hgihihi</h1>
-    <Nuxt />
-  </div>
+  <div>404ss</div>
 </template>
 
 <script>

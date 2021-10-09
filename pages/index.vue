@@ -22,6 +22,9 @@
           <span>${{ product.price }}</span>
         </li>
       </ul>
+      <div class="cart-wrapper">
+        <button class="btn" @click="routeToCart">장바구니 바로가기</button>
+      </div>
     </main>
   </div>
 </template>
@@ -35,11 +38,6 @@ export default {
   components: {
     SearchInput,
   },
-  data() {
-    return {
-      searchKeyword: '',
-    }
-  },
   async asyncData() {
     const { data } = await axios.get('http://localhost:3000/products')
     const products = data.map((item) => ({
@@ -48,7 +46,15 @@ export default {
     }))
     return { products }
   },
+  data() {
+    return {
+      searchKeyword: '',
+    }
+  },
   methods: {
+    routeToCart() {
+      this.$router.push('/cart')
+    },
     moveToDetailPage(id) {
       console.log(id)
       this.$router.push(`detail/${id}`)

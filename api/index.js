@@ -16,4 +16,17 @@ const fetchProductsByKeyword = (keyword) => {
   })
 }
 
-export { fetchProductById, fetchProductsByKeyword }
+const fetchCartItems = () => {
+  return instance.get('/carts')
+}
+
+const createCartItem = (cartItem) => {
+  return instance.post('/carts', cartItem)
+}
+
+export {
+  fetchProductById,
+  fetchProductsByKeyword,
+  fetchCartItems,
+  createCartItem,
+}

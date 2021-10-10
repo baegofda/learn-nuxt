@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { fetchProductById } from '@/api'
+import { createCartItem, fetchProductById } from '@/api'
 
 export default {
   async asyncData({ params }) {
@@ -26,7 +26,9 @@ export default {
     return { product }
   },
   methods: {
-    addToCart() {
+    async addToCart() {
+      const r = await createCartItem(this.product)
+      console.log(r)
       this.$store.commit('addCartItem', this.product)
       this.$router.push('/cart')
     },

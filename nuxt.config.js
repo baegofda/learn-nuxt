@@ -36,6 +36,6 @@ export default {
   build: {},
 
   server: {
-    port: '4000',
+    port: process.env.NODE_ENV === 'production' ? null : 5000,
   },
 }

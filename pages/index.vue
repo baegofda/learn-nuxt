@@ -30,16 +30,15 @@
 </template>
 
 <script>
-import axios from 'axios'
 import SearchInput from '@/components/SearchInput.vue'
-import { fetchProductsByKeyword } from '~/api'
+import { fetchProducts, fetchProductsByKeyword } from '~/api'
 
 export default {
   components: {
     SearchInput,
   },
   async asyncData() {
-    const { data } = await axios.get('http://localhost:3000/products')
+    const { data } = await fetchProducts()
     const products = data.map((item) => ({
       ...item,
       imageUrl: `${item.imageUrl}?random=${Math.random()}`,
@@ -56,7 +55,6 @@ export default {
       this.$router.push('/cart')
     },
     moveToDetailPage(id) {
-      console.log(id)
       this.$router.push(`detail/${id}`)
     },
     // updateSearchKeyword(keyword) {

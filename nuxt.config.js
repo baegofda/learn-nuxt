@@ -38,4 +38,10 @@ export default {
   server: {
     port: process.env.NODE_ENV === 'production' ? null : 5000,
   },
+  env: {
+    baseURL:
+      process.env.NODE_ENV === 'production'
+        ? 'https://my-json-server.typicode.com/baegofda/learn-nuxt-api'
+        : 'http://localhost:3000',
+  },
 }
